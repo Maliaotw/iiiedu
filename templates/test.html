@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+
+
+{% block header %}
+
+    <title>{{ title }}</title>
+
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="pusher ">
+
+        <div class="ui inverted segment">
+            <div class="ui inverted secondary menu">
+                <a class="active item" onclick="side()">
+                    Menu <i class="sidebar icon"></i>
+                </a>
+                <b class="item"><a>{{ title }} </a> </b>
+
+            </div>
+        </div>
+
+        <div class="ui container">
+            <div id="content" class="content">{{ title }}</div>
+        </div>
+
+    </div>
+
+    <script>
+
+        $('.ui.sidebar').sidebar({dimPage: false, closable: false});
+
+        function side() {
+            $('.ui.sidebar').sidebar('toggle');
+        }
+
+
+        $(document).ready(function () {
+            side();
+            var body = JSON.stringify($('.pushable'));
+
+
+            $.ajax({
+
+                url: '/iiiedu/test/ajax/',
+                data: {data: body},
+                type: 'POST',
+                success: function (callback) {
+                    console.log(callback);
+
+                }
+            });
+
+        });
+
+
+    </script>
+
+
+{% endblock %}

@@ -1,0 +1,96 @@
+/*台灣銀行 CSS*/
+
+.sp-div {
+    position: relative;
+}
+
+
+.sp-america-div {
+    left: 0px;
+}
+
+/*img*/
+.sp-img {
+    position: absolute;
+    max-width: none !important;
+}
+
+.sp-america-img {
+    clip: rect(0px 24px 16px 0px);
+}
+
+.sp-hong-kong-img {
+    clip: rect(0px 48px 16px 24px);
+}
+
+.sp-england-img {
+    clip: rect(0px 72px 16px 48px);
+}
+
+.sp-australia-img {
+    clip: rect(0px 96px 16px 72px);
+}
+
+.sp-canada-img {
+    clip: rect(0px 120px 16px 96px);
+}
+
+.sp-singapore-img {
+    clip: rect(16px 24px 32px 0px);
+}
+
+.sp-swiss-img {
+    clip: rect(16px 48px 32px 24px);
+}
+
+.sp-japan-img {
+    clip: rect(16px 72px 32px 48px);
+}
+
+.sp-south-africa-img {
+    clip: rect(16px 96px 32px 72px);
+}
+
+.sp-sweden-img {
+    clip: rect(16px 120px 32px 96px);
+}
+
+.sp-new-zealand-img {
+    clip: rect(32px 24px 48px 0px);
+}
+
+.sp-thailand-img {
+    clip: rect(32px 48px 48px 24px);
+}
+
+.sp-philippine-img {
+    clip: rect(32px 72px 48px 48px);
+}
+
+.sp-indonesia-img {
+    clip: rect(32px 96px 48px 72px);
+}
+
+.sp-euro-img {
+    clip: rect(32px 120px 48px 96px);
+}
+
+.sp-korea-img {
+    clip: rect(48px 24px 64px 0px);
+}
+
+.sp-vietnam-img {
+    clip: rect(48px 48px 64px 24px);
+}
+
+.sp-malaysia-img {
+    clip: rect(48px 72px 64px 48px);
+}
+
+.sp-china-img {
+    clip: rect(48px 96px 64px 72px);
+}
+
+.sp-taiwan-img {
+    clip: rect(48px 120px 64px 96px);
+}

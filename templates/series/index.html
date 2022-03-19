@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+
+
+{% block header %}
+
+    <title>{{ page.series.name  }}</title>
+
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="pusher ">
+
+        <div class="ui inverted segment">
+            <div class="ui inverted secondary menu">
+                <a class="item" onclick="side()">
+                    Menu <i class="sidebar icon"></i>
+                </a>
+                <b class="item" id={{ url }}><a href="/iiiedu/theme/{{ page.theme.url }}">{{ page.theme.name }} </a> </b>
+                {% for m in menu %}
+                    <b class="item" id={{ m.en }}><a href="{% url 'series' m.en %}">{{ m.name }} </a> </b>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="ui container">
+
+
+            <div id="content" class="content">{{ m.name }}</div>
+
+
+
+            <table class="ui striped table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+
+                    <th>日期</th>
+                    <th>時數</th>
+                    <th>價格</th>
+                    <th>城市</th>
+                    <th>單位</th>
+                    <th>類別</th>
+                    <th>立即報名</th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                {% for item in data %}
+                    <tr>
+                        <td>{{ item.class_id }}</td>
+                        <td>{{ item.name }}</td>
+
+                        <td>{{ item.Training_StartDate |date:"Y-m-d " }}
+                            <br/>
+                            {{ item.Training_EndDate |date:"Y-m-d " }}
+                        </td>
+                        <td>{{ item.Training_Hours }}</td>
+                        <td>{{ item.Price_Ownpay }}</td>
+                        <td>{{ item.branch.city }}</td>
+                        <td>{{ item.branch.unit }}</td>
+                        <td>{{ item.Cate.name }}</td>
+                        <td><a href="{{ item.link }}">立即報名</a></td>
+
+
+                    </tr>
+
+                {% endfor %}
+                </tbody>
+                <tfoot>
+                <tr>
+                    <th colspan="9">
+                        <div class="ui right floated pagination menu">
+
+                            {% if data.has_previous %}
+                                <a class="icon item" href="?page=1"><i class="left chevron icon"></i></a>
+                                <a class="item"
+                                   href="?page={{ data.previous_page_number }}">{{ data.previous_page_number }}</a>
+                            {% endif %}
+
+
+                            <a class="item active">{{ data.number }} </a>
+
+                            {% if data.has_next %}
+                                <a class="item"
+                                   href="?page={{ data.next_page_number }}">{{ data.next_page_number }}</a>
+                                <a class="icon item" href="?page={{ data.paginator.num_pages }}"><i
+                                        class="right chevron icon"></i></a>
+
+                            {% endif %}
+
+
+                        </div>
+                    </th>
+                </tr>
+
+                </tfoot>
+
+
+            </table>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        $('.ui.sidebar').sidebar({dimPage: false, closable: false});
+
+        function side() {
+            $('.ui.sidebar').sidebar('toggle');
+        }
+
+
+        $(document).ready(function () {
+            side();
+            $("#{{ page.series.url }}").addClass('active');
+
+        });
+
+
+    </script>
+
+
+{% endblock %}
