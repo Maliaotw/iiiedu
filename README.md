@@ -76,16 +76,44 @@ uv run manage.py runserver
 
 ## 🐳 Docker / NAS 部署
 
-我們提供了專為 NAS (或伺服器) 優化的配置：
+我們提供了專為 NAS (或伺服器) 優化的配置。
+
+### 1. 構建與推送映像檔
+
+執行以下指令進行版本更新並推送到 NAS 私有倉庫：
 
 ```bash
-# 使用生產環境配置啟動
+# 構建最新版本 (請根據 pyproject.toml 調整版本號)
+docker build --no-cache -t 192.168.68.56:5050/iiiedu:v0.1.3 -t 192.168.68.56:5050/iiiedu:latest .
+
+# 推送到 NAS 倉庫
+docker push 192.168.68.56:5050/iiiedu:v0.1.3
+docker push 192.168.68.56:5050/iiiedu:latest
+```
+
+### 2. 啟動服務
+
+使用生產環境配置啟動：
+
+```bash
 docker-compose -f docker-compose-nas.yml up -d
 ```
 
 啟動後，服務會自動：
 1. 執行 `collectstatic` 收集靜態檔案。
 2. 透過 `uWSGI` 的 `static-map` 整合靜態資源與 Django 服務於 `8001` 埠啟動。
+
+## 🐙 GitHub 版本控制
+
+本專案已同步至 GitHub：[Maliaotw/iiiedu](https://github.com/Maliaotw/iiiedu.git)
+
+*   **主分支**: `main`
+*   **提交變更**:
+    ```bash
+    git add .
+    git commit -m "Your description"
+    git push origin main
+    ```
 
 ## 🔒 安全性說明
 
