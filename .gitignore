@@ -1,0 +1,49 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+.python-version
+
+# Virtual environments
+.venv
+env/
+venv/
+ENV/
+
+# Sensitive data / Environment variables
+.env
+.env.*
+!.env.example
+
+# Database
+db.sqlite3
+*.db
+
+# Data files (raw data often too large or sensitive)
+data/raw/
+data/static/
+data/media/
+*.xlsx
+*.pkl
+*.csv
+*.json
+!static/data/**/*.json
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Docker / Deployment
+docker-compose-nas.yml

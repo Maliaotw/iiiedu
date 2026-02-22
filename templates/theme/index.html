@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block header %}
+
+    <title>{{ title }}</title>
+    <script src="{% static 'js/highstock.js' %}"></script>
+    <script src="{% static 'js/exporting.js' %}"></script>
+
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="pusher ">
+
+        <div class="ui inverted segment">
+            <div class="ui inverted secondary menu">
+                <a class="item" onclick="side()">
+                    Menu <i class="sidebar icon"></i>
+                </a>
+                <b class="item" id={{ url }}><a href="/iiiedu/theme/{{ url }}">{{ title }} </a> </b>
+                {% for m in menu %}
+                    <b class="item" id={{ m.en }}><a href="{% url 'series' m.en %}">{{ m.name }} </a> </b>
+                {% endfor %}
+
+            </div>
+        </div>
+
+        <div class="ui  grey inverted container">
+
+
+            <div id="stack"></div>
+
+            <div class="ui equal width grid">
+                <div class="column">
+                    <div id="pie"></div>
+                </div>
+
+                <div class="column">
+                    <div id="bar"></div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <script>
+
+        $('.ui.sidebar').sidebar({dimPage: false, closable: false});
+
+        function side() {
+            $('.ui.sidebar').sidebar('toggle');
+        }
+
+
+        $(document).ready(function () {
+            side();
+            Highcharts.chart('stack', {{ data.stack|safe }});
+            Highcharts.chart('pie', {{ data.pie|safe }});
+            Highcharts.chart('bar', {{ data.bar|safe }});
+            $("#{{ url }}").addClass('active');
+
+        });
+
+
+    </script>
+
+
+{% endblock %}

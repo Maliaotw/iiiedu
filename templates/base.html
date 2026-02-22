@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <script src={% static 'js/jquery-3.2.1.js' %}></script>
+    <script src={% static 'js/semantic.js' %}></script>
+    <link href="{% static 'css/semantic.css' %}" rel="stylesheet">
+
+    {% block header %}
+
+        <title>Title of the document</title>
+
+    {% endblock %}
+
+
+</head>
+
+<body>
+
+
+<div class="ui thin sidebar inverted vertical  menu uncover visible">
+
+    <div class="item">
+        <a class="ui icon image" href="{% url 'chart_theme' %}">
+            <img style="width: 50px;height: 50px" src={% static 'images/logo.png' %}>
+        </a>
+        <a href="{% url 'chart_theme' %}"><b>iiiedu</b></a>
+    </div>
+    <div class="item">
+
+
+        <div class="ui inverted icon input">
+            <input type="text" name="search" placeholder="搜索...">
+            <i class="circular search link icon"></i>
+        </div>
+
+    </div>
+
+    <div class="item">
+        <div class="header">圖表 <i class="bar chart icon large"></i></div>
+        <div class="menu">
+
+            <a class="item" href="/iiiedu/chert/course">
+                十大熱門
+            </a>
+
+            <a class="item" href="/iiiedu/chert/certified">
+                十大認證
+            </a>
+
+            <a class="item" href="/iiiedu/chert/lang">
+                十大語言
+            </a>
+
+        </div>
+    </div>
+
+    <div class="item">
+        <div class="header"> 課程<i class="book icon large"></i></div>
+        <div class="menu">
+
+            <a class="item" href="/iiiedu/course/">
+                專業課程
+            </a>
+            <a class="item" href="/iiiedu/course/cert/">
+                專長養成班
+            </a>
+            <a class="item" href="/iiiedu/course/full">
+                認證班
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="header"><a href="/iiiedu/chert/theme">主題<i class="eye icon large"></i></a></div>
+        <div class="menu">
+
+            <a class="item" href="/iiiedu/theme/ai">
+                大數據 / AI
+            </a>
+            <a class="item" href="/iiiedu/theme/dm">
+                數位行銷
+            </a>
+            <a class="item" href="/iiiedu/theme/wi">
+                智慧產業
+            </a>
+            <a class="item" href="/iiiedu/theme/tim">
+                科技創新管理
+            </a>
+            <a class="item" href="/iiiedu/theme/iap">
+                資訊架構規劃
+            </a>
+            <a class="item" href="/iiiedu/theme/isd">
+                資訊系統開發
+            </a>
+            <a class="item" href="/iiiedu/theme/sw">
+                軟實力
+            </a>
+        </div>
+    </div>
+
+
+</div>
+
+{% block content %}
+
+
+
+{% endblock %}
+
+</body>
+
+<script>
+
+
+    $(document).ready(function () {
+        $(".search").click(function () {
+            var s = $( "input[name='search']" ).val();
+            document.location.href="/iiiedu/search/?name="+s;
+        });
+    });
+</script>

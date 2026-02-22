@@ -1,0 +1,15 @@
+.git
+.venv
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.db.sqlite3
+.env
+data/static/
+data/media/
+.python-version
+.idea/
+notebook/
+*.xlsx
+*.pkl
