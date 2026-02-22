@@ -84,11 +84,11 @@ uv run manage.py runserver
 
 ```bash
 # 構建最新版本 (請根據 pyproject.toml 調整版本號)
-docker build --no-cache -t 192.168.68.56:5050/iiiedu:v0.1.3 -t 192.168.68.56:5050/iiiedu:latest .
+docker build --no-cache -t <NAS_IP>:<PORT>/iiiedu:v0.1.3 -t <NAS_IP>:<PORT>/iiiedu:latest .
 
 # 推送到 NAS 倉庫
-docker push 192.168.68.56:5050/iiiedu:v0.1.3
-docker push 192.168.68.56:5050/iiiedu:latest
+docker push <NAS_IP>:<PORT>/iiiedu:v0.1.3
+docker push <NAS_IP>:<PORT>/iiiedu:latest
 ```
 
 ### 2. 啟動服務
